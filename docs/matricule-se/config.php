@@ -2,8 +2,8 @@
 
     $dbHost = 'LocalHost';
     $dbusername = 'root';
-    $dbPassword = '';
-    $dbName = '';
+    $dbPassword = 'Pontepreta@220404';
+    $dbName = 'formulario-ctft';
 
     $conexao = new mysqli($dbHost, $dbusername, $dbPassword, $dbName);
 

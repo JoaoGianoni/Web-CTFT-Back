@@ -38,28 +38,6 @@ body {
     justify-content: space-between;
 }
 
-.start-button {
-    display: flex;
-    align-items: center;
-}
-
-.start-button button {
-    border: none;
-    background-color: #00aeef;
-    padding: 0.4rem 1rem;
-    border-radius: 5px;
-    cursor: pointer; 
-}
-
-.start-button button:hover {
-    background-color: #153d8a;
-}
-
-.start-button button a {
-    text-decoration: none;
-    font-weight: 500;
-    color: #fff;
-}
   
 .form-header h1::after {
     content: "";
