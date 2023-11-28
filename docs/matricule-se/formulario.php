@@ -113,9 +113,9 @@ if (isset($_SESSION['id'])) {
                         <?php
                         // Se estiver logado, redireciona para aluno.php, caso contrário, para home.php
                         if ($logado) {
-                            echo '<a href="../../../rascunho-ctft/docs/aluno/aluno.php">Área do Aluno</a>';
+                            echo '<a href="../../../web-ctft-back/docs/aluno/aluno.php">Área do Aluno</a>';
                         } else {
-                            echo '<a href="../../../rascunho-ctft/docs/home.php">Início</a>';
+                            echo '<a href="../../../web-ctft-back/docs/home.php">Início</a>';
                         }
                         ?>
                     </div>

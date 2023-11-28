@@ -85,7 +85,7 @@ $logado = $_SESSION['email'];
             </div>
 
             <div class="box">
-                <a href="/rascunho-ctft/docs/matricule-se/formulario.php">Alterar Informações</a>
+                <a href="/web-ctft-back/docs/matricule-se/formulario.php">Alterar Informações</a>
             </div>
 
             <div class="box-logout">
