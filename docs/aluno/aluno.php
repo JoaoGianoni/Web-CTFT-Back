@@ -16,7 +16,51 @@ $logado = $_SESSION['email'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilos/aluno.css">
+    <link rel="stylesheet" href="../../docs/estilos/aluno.css">
+    <style>
+        .box a{
+            width: 100%;
+            margin-top: 1rem;
+            border: none;
+            background-color: #00aeef;
+            padding: 0.70rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 0.93rem;
+            font-weight: 500;
+            color: #fff;
+            display: block;
+        }
+
+        .box a:hover{
+            background-color: #153d8a;
+        }
+
+        .box-logout a{
+            width: 100%;
+            margin-top: 1rem;
+            border: none;
+            background-color: red;
+            padding: 0.70rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.93rem;
+            font-weight: 500;
+            color: #fff;
+            display: block
+        }
+
+        .box-logout a:hover{
+            background-color: rgb(119, 0, 0);
+
+        }
+
+    </style>
 </head>
 
 <body>
@@ -41,7 +85,7 @@ $logado = $_SESSION['email'];
             </div>
 
             <div class="box">
-                <a href="/rascunho-ctft/docs/matricule-se/formulario.php">Alterar Informações</a>
+                <a href="/web-ctft-back/docs/matricule-se/formulario.php">Alterar Informações</a>
             </div>
 
             <div class="box-logout">

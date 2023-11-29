@@ -1,42 +1,45 @@
 <?php
 session_start();
 
-    $logado = isset($_SESSION['id']);
+$logado = isset($_SESSION['id']);
 
-    if(isset($_POST['submit']))
-    {
-        //print_r('name: ' . $_POST['name']);
-        //print_r('<br>');
-        //print_r('email: ' . $_POST['email']);
-        //print_r('<br>');
-        //print_r('cpf: ' . $_POST['cpf']);
-        //print_r('<br>');
-        //print_r('celular: ' . $_POST['celular']);
-        //print_r('<br>');
-        //print_r('senha: ' . $_POST['senha']);
-        //print_r('<br>');
-        //print_r('objetivo: ' . $_POST['objective']);
-        //print_r('<br>');
-        //print_r('genero: ' . $_POST['gender']);
+if (isset($_POST['submit'])) {
+    //print_r('name: ' . $_POST['name']);
+    //print_r('<br>');
+    //print_r('email: ' . $_POST['email']);
+    //print_r('<br>');
+    //print_r('cpf: ' . $_POST['cpf']);
+    //print_r('<br>');
+    //print_r('celular: ' . $_POST['celular']);
+    //print_r('<br>');
+    //print_r('senha: ' . $_POST['senha']);
+    //print_r('<br>');
+    //print_r('objetivo: ' . $_POST['objective']);
+    //print_r('<br>');
+    //print_r('genero: ' . $_POST['gender']);
 
-        include_once('config.php');
+    include_once('config.php');
 
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $cpf = $_POST['cpf'];
-        $celular = $_POST['celular'];
-        $senha = $_POST['senha'];
-        $objetivo = $_POST['objective'];
-        $genero = $_POST['genero'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $cpf = $_POST['cpf'];
+    $celular = $_POST['celular'];
+    $senha = $_POST['senha'];
+    $objetivo = $_POST['objective'];
+    $genero = $_POST['genero'];
 
-        if ($logado) {
-            $result = mysqli_query($conexao, "update usuarios set nome='$name',email='$email',cpf='$cpf',celular='$celular',objetivo='$objetivo',genero='$genero' where idusuarios=$_SESSION[id]");
-        }
-        else {
-            $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,cpf,celular,senha,objetivo,genero) 
+    if ($logado) {
+        $result = mysqli_query($conexao, "update usuarios set nome='$name',email='$email',cpf='$cpf'
+            ,celular='$celular',objetivo='$objetivo',genero='$genero' where idusuarios=$_SESSION[id]");
+
+        header('Location: ../aluno/aluno.php');
+    } else {
+        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,cpf,celular,senha,objetivo,genero) 
             VALUES('$name','$email','$cpf','$celular','$senha','$objetivo','$genero')");
-        }
+
+        header('Location: ../login/login.php');
     }
+}
 ////////////////////////////////////////////////////////
 
 // Definir variáveis do aluno com valores padrão
@@ -72,12 +75,32 @@ if (isset($_SESSION['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matricule-se</title>
     <link rel="stylesheet" href="../estilos/mstyles.css">
+    <style>
+        .start-button a {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .start-button a:hover {
+            background-color: #153d8a;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <div class="form">
@@ -87,7 +110,14 @@ if (isset($_SESSION['id'])) {
                         <h1>Matricule-se</h1>
                     </div>
                     <div class="start-button">
-                        <button><a href="../../../rascunho-ctft/docs/home.php">Início</a></button>
+                        <?php
+                        // Se estiver logado, redireciona para aluno.php, caso contrário, para home.php
+                        if ($logado) {
+                            echo '<a href="../../../web-ctft-back/docs/aluno/aluno.php">Área do Aluno</a>';
+                        } else {
+                            echo '<a href="../../../web-ctft-back/docs/home.php">Início</a>';
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -119,7 +149,7 @@ if (isset($_SESSION['id'])) {
 
                     <div class="input-box-select">
                         <label for="objective">Objetivo</label>
-                        <select id="objective" type="text" name="objective" placeholder="Escolha uma" required value="<?= $logado ? $aluno['objectve'] : "" ?>">
+                        <select id="objective" type="text" name="objective" placeholder="Escolha uma" required value="<?= $logado ? $aluno['objective'] : "" ?>">
                             <option value="perder_peso">Perder Peso</option>
                             <option value="ganhar_massa_muscular">Ganhar Massa Muscular</option>
                             <option value="aumentar_resistencia">Aumentar Resistência</option>
@@ -133,36 +163,33 @@ if (isset($_SESSION['id'])) {
                     </div>
                 </div>
 
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <h6>Genêro</h6>
+                <div class="gender-group">
+                    <div class="gender-input">
+                        <input type="radio" id="feminino" name="genero" value="feminino" <?php echo ($logado && $aluno['genero'] == 'feminino') ? 'checked' : ''; ?>>
+                        <label for="feminino">Feminino</label>
                     </div>
 
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input type="radio" id="feminino" name="genero" >
-                            <label for="feminino">Feminino</label>
-                        </div>
+                    <div class="gender-input">
+                        <input type="radio" id="masculino" name="genero" value="masculino" <?php echo ($logado && $aluno['genero'] == 'masculino') ? 'checked' : ''; ?>>
+                        <label for="masculino">Masculino</label>
+                    </div>
 
-                        <div class="gender-input">
-                            <input type="radio" id="masculino" name="genero">
-                            <label for="masculino">Masculino</label>
-                        </div>
+                    <div class="gender-input">
+                        <input type="radio" id="outros" name="genero" value="outros" <?php echo ($logado && $aluno['genero'] == 'outros') ? 'checked' : ''; ?>>
+                        <label for="outros">Outros</label>
+                    </div>
 
-                        <div class="gender-input">
-                            <input type="radio" id="outros" name="genero">
-                            <label for="outros">Outros</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input type="radio" id="none" name="genero">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
+                    <div class="gender-input">
+                        <input type="radio" id="none" name="genero" value="prefiro_nao_dizer" <?php echo ($logado && $aluno['genero'] == 'prefiro_nao_dizer') ? 'checked' : ''; ?>>
+                        <label for="none">Prefiro não dizer</label>
                     </div>
                 </div>
-        <div class="submit">      
-        <input type="submit" name="submit" id="submit" value="CADASTRAR">
+                <div class="submit">
+                    <input type="submit" name="submit" id="submit" value="CADASTRAR">
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </body>
+
 </html>

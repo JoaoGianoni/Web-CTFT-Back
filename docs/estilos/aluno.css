@@ -63,6 +63,23 @@ body {
     background-color: #153d8a;
 }
 
+.box a{
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    background-color: #00aeef;
+    padding: 0.70rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+    display: block;
+}
+
 .box-logout a{
     margin-top: 10px;
 }

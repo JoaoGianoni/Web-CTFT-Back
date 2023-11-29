@@ -17,7 +17,7 @@
                         <h1>Login</h1>
                     </div>
                     <div class="start-button">
-                        <a href="../../../rascunho-ctft/docs/home.php">Início</a>
+                        <a href="../../../web-ctft-back/docs/home.php">Início</a>
                     </div>
                 </div>
 

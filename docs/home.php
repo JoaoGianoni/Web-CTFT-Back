@@ -24,7 +24,7 @@
                     <li><a href="#sobre-nos" id="scroll">Sobre nós</a></li>
                     <li><a href="#modalidades" id="scroll">Modalidades</a></li>
                     <li><a href="#horarios" id="scroll">Horários</a></li>
-                    <li><a href="../../rascunho-ctft/docs/login/login.php">Login</a></li>
+                    <li><a href="../../web-ctft-back/docs/login/login.php">Login</a></li>
                     <li><a href="#fale-conosco" id="scroll">Fale conosco</a></li>
                 </ul>
             </nav>
@@ -40,7 +40,7 @@
             <div class="chamada1">
                 <h3>Academia funcional</h3>
                 <p>Treinar não fica fácil, você que fica melhor!</p>
-                <a href="../../rascunho-ctft/docs/matricule-se/formulario.php">Matricule-se</a>
+                <a href="../../web-ctft-back/docs/matricule-se/formulario.php">Matricule-se</a>
             </div>
         </div>
     </header>
